@@ -26,7 +26,7 @@ const showShirt = (data)=>{
         shirtEle.classList.add('box')
          shirtEle.innerHTML = `
         <div id ="${id}">
-         <a href="">
+         <a href="product-detail-women.html?id=${id}">
              <img src="${thumbnail}">
              <div id="details">
                  <h3>${title}</h3>
@@ -65,7 +65,7 @@ const showWatch = (watch_data)=>{
         WatchEle.classList.add('box')
          WatchEle.innerHTML = `
         <div id ="${id}">
-         <a href="">
+         <a href="product-detail-women.html?id=${id}">
              <img src="${thumbnail}">
              <div id="details">
                  <h3>${title}</h3>
@@ -84,7 +84,7 @@ const showWatch = (watch_data)=>{
 
 
 
-// 888888888888888888888 fetch Mens-shoes 888888888888888888888888
+// 888888888888888888888 fetch womens-shoes 888888888888888888888888
 
 const shoe_container = document.getElementById("shoe-container") 
 async function getMensShoe(url){
@@ -105,7 +105,7 @@ const showShoe = (shoe_data)=>{
         ShoeEle.classList.add('box')
          ShoeEle.innerHTML = `
         <div id ="${id}">
-         <a href="">
+         <a href="product-detail-women.html?id=${id}">
              <img src="${thumbnail}">
              <div id="details">
                  <h3>${title}</h3>
@@ -119,4 +119,68 @@ const showShoe = (shoe_data)=>{
     });
 }
 
-// 888888888888888888888 fetch Mens-shoes 888888888888888888888888
+// 888888888888888888888 fetch womens-shoes 888888888888888888888888
+
+
+
+
+// 8888888888888888888 Fetching single Product 88888888888888888888
+
+const single_product = document.getElementById("single-product");
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+const productUrl = `https://dummyjson.com/products/${productId}`;
+
+async function getSIngleProduct(url){
+    const res = await fetch(url);
+    const single_product_details = await res.json();
+    showSIngleProduct(single_product_details);
+}
+getSIngleProduct(productUrl);
+
+const showSIngleProduct = (single_product_details)=>{
+    single_product.innerHTML='';
+    const {id, category, description, rating, title, price, brand, thumbnail} = single_product_details;
+    console.log(description)
+    const SingleEle = document.createElement('div')
+    SingleEle.classList.add('pro-details-container')
+    SingleEle.innerHTML = `
+        <div class="left-column">
+            <img src="${thumbnail}" alt="${title}">
+        </div>
+        <div class="right-column">
+            <div class="product-description">
+                <span>${category}</span>
+                <div class="pro-rating">
+                    <span>${rating}</span>
+                </div>
+                <h1>${title}</h1>
+                <h3>${brand}</h3>
+                <p>${description}</p>
+            </div>
+            <div class="product-configuration">
+                <div class="size-config">
+                    <span>Size</span>
+                    <div class="size-choose">
+                        <button>S</button>
+                        <button>M</button>
+                        <button>L</button>
+                        <button>XL</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-price">
+                <span>₹ ${price}</span>
+                <div>
+                    <a href="#" class="cart-btn">Add to cart</a>
+                    <a href="#" class="cart-btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    `;
+    single_product.appendChild(SingleEle);
+};
+
+// 8888888888888888888 Fetching single Product 88888888888888888888
+
+
