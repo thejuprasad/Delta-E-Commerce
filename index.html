@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <main class="choose-container">
+        <div class="mens-container">
+            <img src="img/forhim.png" alt="for him" srcset="">
+            <button class="btn" id="btn-him">Button</button>
+
+        </div>
+        <div class="women-container">
+            <img src="img/forher.png" alt="for her" srcset="">
+            <button class="btn" id="btn-her">Button</button>
+        </div>
+    </main>
+</body>
+
+<script>
+    const menIndex = document.getElementById('btn-him').addEventListener("click", ()=>{
+        window.location.href ="./mens/men-index.html"
+    })
+    const womenIndex = document.getElementById('btn-her').addEventListener("click", ()=>{
+        window.location.href ="./women/women-index.html"
+    })
+</script>
+</html>
