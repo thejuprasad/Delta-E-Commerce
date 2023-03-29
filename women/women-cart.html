@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta</title>
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <link rel="stylesheet" href="cart-style.css">
+    <link rel="stylesheet" href="../women/women-style.css">
+
+    <style>
+        .margin-top {
+            padding-top: 100px;
+        }
+
+        .product-price {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 88888888888888888888888888  Header Part  88888888888888888888888888888888888 -->
+
+
+    <header>
+        <section>
+            <div id="Header-container">
+                <div id="Logo">
+                    <a href="../women/women-index.html"> <b>Delta Wear</b></a>
+                </div>
+                <div id="categories-items">
+                    <div id="clothing">
+                        <a href="../women/clothing-women.html"> CLOTHING </a>
+                    </div>
+                    <div id="accessories">
+                        <a href="../women/accessories-women.html"> ACCESSORIES </a>
+                    </div>
+                </div>
+                <div id="search">
+                    <i class="fas fa-search search"></i>
+                    <input type="text" id="input" name="searchBox" placeholder="Search for Clothing and Accessories">
+                </div>
+                <div id="user">
+                    <a href="women-cart.html"> <i class="fas fa-shopping-cart addedToCart">
+                            <div id="badge"> 0 </div>
+                        </i></a>
+                    <a href="#"> <i class="fas fa-user-circle userIcon"></i> </a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+    <!-- 88888888888888888888888888  Header Part  88888888888888888888888888888888888 -->
+
+
+
+    <!-- cart Design -->
+
+
+    <div class="container" id="cart-container">
+        <div class="shopping-cart">
+
+            <div class="column-labels">
+                <label class="product-image">Image</label>
+                <label class="product-details">Product</label>
+                <label class="product-price">Price</label>
+                <label class="product-quantity">Quantity</label>
+                <label class="product-removal">Remove</label>
+                <label class="product-line-price">Total</label>
+            </div>
+
+            <div class="product" id="element-details">
+                <div class="product-image">
+                    <img src="https://i.dummyjson.com/data/products/68/thumbnail.webp">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Dingo Dog Bones</div>
+                    <p class="product-description">ce and ate one myself. I'm a fan.</p>
+                </div>
+                <div class="product-price">12.99</div>
+                <div class="product-quantity">
+                    <input type="number" value="2" min="1">
+                </div>
+                <div class="product-removal">
+                    <button class="remove-product">
+                        Remove
+                    </button>
+                </div>
+                <div class="product-line-price">25.98</div>
+            </div>
+
+
+
+            <div class="totals">
+                <div class="totals-item">
+                    <label>Subtotal</label>
+                    <div class="totals-value" id="cart-subtotal">71.97</div>
+                </div>
+                <div class="totals-item">
+                    <label>Tax (5%)</label>
+                    <div class="totals-value" id="cart-tax">3.60</div>
+                </div>
+                <div class="totals-item">
+                    <label>Shipping</label>
+                    <div class="totals-value" id="cart-shipping">15.00</div>
+                </div>
+                <div class="totals-item totals-item-total">
+                    <label>Grand Total</label>
+                    <div class="totals-value" id="cart-total">90.57</div>
+                </div>
+            </div>
+
+            <a href="women-checkout.html"><button class="btn  checkout">Checkout</button></a>
+
+        </div>
+    </div>
+
+    </div>
+
+    <!-- cart Design -->
+
+</body>
+<script src="../women/women-script.js"></script>
+
+
+</html>

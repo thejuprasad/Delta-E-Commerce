@@ -106,6 +106,9 @@
 #user a {
     color: #cf05a3
 }
+#user span {
+    color: #cf05a3
+}
 
 /* ----------------------------- MEDIA QUERY --------------------------- */
 
@@ -599,8 +602,6 @@
 
 
 
-
-
   .product-price {
     display: flex;
     align-items: flex-start;
@@ -613,6 +614,10 @@
     font-weight: 300;
     color: #43474D;
     margin-right: 20px;
+  }
+  .product-price button {
+    color: #fff;
+    border: none;
   }
 
 
@@ -661,3 +666,56 @@
 
 
 /* single product details */
+
+
+
+/* cart button open overlay  */
+
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9); 
+    overflow-x: hidden; 
+    transition: 0.5s; 
+  }
+  
+  .overlay-content {
+     position: relative;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    text-decoration: none;
+    color: #cf05a3;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+
+
+
+
+
+
+
+/* cart button open overlay  */
