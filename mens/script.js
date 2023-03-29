@@ -134,17 +134,17 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 const productUrl = `https://dummyjson.com/products/${productId}`;
 
-async function getSIngleProduct(url){
+async function getSIngleProduct(url) {
     const res = await fetch(url);
     const single_product_details = await res.json();
     showSIngleProduct(single_product_details);
 }
 getSIngleProduct(productUrl);
 
-const showSIngleProduct = (single_product_details)=>{
-    single_product.innerHTML='';
-    const {id, category, description, rating, title, price, brand, thumbnail} = single_product_details;
-    console.log(description)
+const showSIngleProduct = (single_product_details) => {
+    single_product.innerHTML = '';
+    const { id, category, description, rating, title, price, brand, thumbnail } = single_product_details;
+    // console.log(description)
     const SingleEle = document.createElement('div')
     SingleEle.classList.add('pro-details-container')
     SingleEle.innerHTML = `
@@ -175,14 +175,166 @@ const showSIngleProduct = (single_product_details)=>{
             <div class="product-price">
                 <span>₹ ${price}</span>
                 <div>
-                    <a href="#" class="cart-btn">Add to cart</a>
-                    <a href="#" class="cart-btn">Buy Now</a>
+                    <button class="cart-btn" id="cart-btn">Add to cart</button>
                 </div>
             </div>
         </div>
     `;
     single_product.appendChild(SingleEle);
+
+
+
+
+
+    const addToCartBtn = SingleEle.querySelector('#cart-btn');
+    addToCartBtn.addEventListener('click', () => {
+        // get existing cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // check if product is already in cart
+        const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
+
+        if (!isProductInCart) {
+            // add new product to cart
+            const newCartItem = {
+                id: single_product_details.id,
+                title: single_product_details.title,
+                price: single_product_details.price,
+                thumbnail: single_product_details.thumbnail,
+                description: single_product_details.description
+            };
+            cartItems.push(newCartItem);
+
+            // update localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // update cart badge
+            const cartBadge = document.getElementById('badge');
+            cartBadge.innerText = cartItems.length;
+        }
+    });
+
+
 };
 
 // 8888888888888888888 Fetching single Product 88888888888888888888
+
+
+
+
+
+
+
+// 888888888888888888888   cart page 8888888888888888888
+
+const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const cartContainer = document.getElementById('element-details');
+const cartSubtotalElement = document.getElementById('cart-subtotal');
+
+const cartTaxElement = document.getElementById('cart-tax');
+const cartShippingElement = document.getElementById('cart-shipping');
+const cartTotalElement = document.getElementById('cart-total');
+
+ cartContainer.innerHTML='';
+cartItems.forEach(item => {
+
+    const productEle = document.createElement('div');
+    productEle.classList.add('product');
+    productEle.innerHTML = `
+    <div class="product-image">
+        <img src="${item.thumbnail}">
+    </div>
+    <div class="product-details">
+        <div class="product-title">${item.title}</div>
+        <p class="product-description">${item.description}</p>
+    </div>
+    <div class="product-price">${item.price}</div>
+    <div class="product-quantity">
+        <input type="number" value="1" min="1" id="pCount">
+    </div>
+    <div class="product-removal">
+        <button class="remove-product">Remove</button>
+    </div>
+    <div class="product-line-price" id="product-mul-price">${item.price}</div>
+    </div>
+
+    `
+    cartContainer.appendChild(productEle);
+
+    const pCountInput = productEle.querySelector('#pCount');
+    const productLinePrice = productEle.querySelector('#product-mul-price');
+
+    pCountInput.addEventListener('change', () => {
+        const quantity = pCountInput.value;
+        const price = item.price;
+        const linePrice = quantity * price;
+        productLinePrice.textContent = linePrice;
+
+
+        // Recalculate cart subtotal
+        let subtotal = 0;
+        const linePrices = cartContainer.querySelectorAll('.product-line-price');
+        linePrices.forEach(linePrice => {
+            subtotal += parseFloat(linePrice.textContent);
+        });
+        cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+        // Recalculate cart tax and total
+        const cartTax = subtotal * 0.05;
+        cartTaxElement.textContent = cartTax.toFixed(2);
+        const cartTotal = subtotal + cartTax + 15;
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    });
+
+    const removeProductButton = productEle.querySelector('.remove-product');
+
+    removeProductButton.addEventListener('click', () => {
+        cartContainer.removeChild(productEle); // Remove product element from the DOM
+        const index = cartItems.indexOf(item);
+        if (index > -1) {
+            cartItems.splice(index, 1); // Remove corresponding item from cartItems array
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+
+        // Recalculate cart subtotal
+        let subtotal = 0;
+        const linePrices = cartContainer.querySelectorAll('.product-line-price');
+        linePrices.forEach(linePrice => {
+            subtotal += parseFloat(linePrice.textContent);
+        });
+        cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+        // Recalculate cart tax and total
+        const cartTax = subtotal * 0.05;
+        cartTaxElement.textContent = cartTax.toFixed(2);
+        const cartTotal = subtotal + cartTax + 15;
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    });
+ 
+
+});
+
+// Calculate cart subtotal on page load
+let subtotal = 0;
+const linePrices = cartContainer.querySelectorAll('.product-line-price');
+linePrices.forEach(linePrice => {
+    subtotal += parseFloat(linePrice.textContent);
+});
+cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+// Recalculate cart tax and total
+const cartTax = subtotal * 0.05;
+cartTaxElement.textContent = cartTax.toFixed(2);
+const cartTotal = subtotal + cartTax + 15;
+cartTotalElement.textContent = cartTotal.toFixed(2);
+
+
+// 888888888888888888888   cart page 8888888888888888888
+
+
+
+
+
+
 

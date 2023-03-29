@@ -221,8 +221,15 @@ const showSIngleProduct = (single_product_details) => {
 
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const cartContainer = document.getElementById('element-details');
+const cartSubtotalElement = document.getElementById('cart-subtotal');
+
+const cartTaxElement = document.getElementById('cart-tax');
+const cartShippingElement = document.getElementById('cart-shipping');
+const cartTotalElement = document.getElementById('cart-total');
+
  cartContainer.innerHTML='';
 cartItems.forEach(item => {
+
     const productEle = document.createElement('div');
     productEle.classList.add('product');
     productEle.innerHTML = `
@@ -235,22 +242,89 @@ cartItems.forEach(item => {
     </div>
     <div class="product-price">${item.price}</div>
     <div class="product-quantity">
-        <input type="number" value="2" min="1">
+        <input type="number" value="1" min="1" id="pCount">
     </div>
     <div class="product-removal">
-        <button class="remove-product">
-            Remove
-        </button>
+        <button class="remove-product">Remove</button>
     </div>
-    <div class="product-line-price">25.98</div>
-</div>
+    <div class="product-line-price" id="product-mul-price">${item.price}</div>
+    </div>
 
-
-    
     `
     cartContainer.appendChild(productEle);
+
+    const pCountInput = productEle.querySelector('#pCount');
+    const productLinePrice = productEle.querySelector('#product-mul-price');
+
+    pCountInput.addEventListener('change', () => {
+        const quantity = pCountInput.value;
+        const price = item.price;
+        const linePrice = quantity * price;
+        productLinePrice.textContent = linePrice;
+
+
+        // Recalculate cart subtotal
+        let subtotal = 0;
+        const linePrices = cartContainer.querySelectorAll('.product-line-price');
+        linePrices.forEach(linePrice => {
+            subtotal += parseFloat(linePrice.textContent);
+        });
+        cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+        // Recalculate cart tax and total
+        const cartTax = subtotal * 0.05;
+        cartTaxElement.textContent = cartTax.toFixed(2);
+        const cartTotal = subtotal + cartTax + 15;
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    });
+
+    const removeProductButton = productEle.querySelector('.remove-product');
+
+    removeProductButton.addEventListener('click', () => {
+        cartContainer.removeChild(productEle); // Remove product element from the DOM
+        const index = cartItems.indexOf(item);
+        if (index > -1) {
+            cartItems.splice(index, 1); // Remove corresponding item from cartItems array
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+
+        // Recalculate cart subtotal
+        let subtotal = 0;
+        const linePrices = cartContainer.querySelectorAll('.product-line-price');
+        linePrices.forEach(linePrice => {
+            subtotal += parseFloat(linePrice.textContent);
+        });
+        cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+        // Recalculate cart tax and total
+        const cartTax = subtotal * 0.05;
+        cartTaxElement.textContent = cartTax.toFixed(2);
+        const cartTotal = subtotal + cartTax + 15;
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    });
+ 
+
 });
 
+// Calculate cart subtotal on page load
+let subtotal = 0;
+const linePrices = cartContainer.querySelectorAll('.product-line-price');
+linePrices.forEach(linePrice => {
+    subtotal += parseFloat(linePrice.textContent);
+});
+cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+// Recalculate cart tax and total
+const cartTax = subtotal * 0.05;
+cartTaxElement.textContent = cartTax.toFixed(2);
+const cartTotal = subtotal + cartTax + 15;
+cartTotalElement.textContent = cartTotal.toFixed(2);
+
+
 // 888888888888888888888   cart page 8888888888888888888
+
+
+
 
 

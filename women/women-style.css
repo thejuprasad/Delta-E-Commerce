@@ -169,7 +169,7 @@
 
 @media(max-width: 650px) {
     #Logo {
-        font-size: 24px;
+        font-size: 14px;
     }
     
     #categories-items {
@@ -179,12 +179,15 @@
     .userIcon {
         font-size: 30px;
     }
+    
 }
 
 @media(max-width: 550px) {
     #Header-container {
         padding: 20px 25px;
+       
     }
+   
 }
 
 /* badge media */
@@ -315,7 +318,16 @@
 
 @media(max-width: 500px) {
     #containerSlider img {
-        height: 10em;
+        height: 15em;
+    }
+
+    #containerSlider {
+        margin: auto;
+        width: 90%;
+        text-align: center;
+        padding-top: 20px;
+        height: 268px;
+        box-sizing: border-box;
     }
 }
 
@@ -468,6 +480,13 @@
         width: 80%;
         grid-template-columns: repeat(2, 1fr);
     }
+    #clothing-container img, #watch-container img, #shoe-container img
+    {
+        width: 100%;
+        height: 173px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
 }
 
 /* 88888888888888888888888888  Product Part  88888888888888888888888888888888 */
@@ -486,20 +505,18 @@
 
 .left-column {
     width: 50%;
-    position: relative;
+    /* position: relative; */
   }
    
   .right-column {
     width: 50%;
-    margin-top: 60px;
+    margin-top: 30px;
   }
 
   .left-column img {
-    width: 500px;
-    height: 600px;
-    position: absolute;
-    left: 0;
-    top: 0;
+    width: 400px;
+    height: 500px;
+    margin-left: 50px;
     opacity: 1;
     transition: all 0.3s ease;
   }
@@ -575,9 +592,7 @@
     border-bottom: 1px solid #E1E8EE;
     margin-bottom: 20px;
   }
-  /* .size-config span{
-    margin: 10px 0px;
-  } */
+
    
   .size-config a {
     color: #358ED7;
@@ -657,10 +672,38 @@
   }
    
   @media (max-width: 535px) {
+
+    .pro-details-container {
+        flex-direction: column;
+        margin-top: 20px;
+      }
+
+      .right-column{
+        margin-top: 20px;
+      }
+
     .left-column img {
-      width: 220px;
-      top: -85px;
+      width: 100%;
+      height: 400px;
+      margin-left: 0;
     }
+    .product-description{
+        position: relative;
+    }
+    .pro-rating{
+        position: absolute;
+        right: 25px;
+        top: -22px;
+    }
+    .product-description h1 {
+        font-weight: 300;
+        font-size: 33px;
+        margin-top: 10px;
+        color: #43484D;
+        letter-spacing: 0px;
+    }
+
+
   }
 
 
