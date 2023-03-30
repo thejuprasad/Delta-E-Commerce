@@ -15,7 +15,7 @@
     float: left;
     width: 37%;
 }
-.product-price {
+.product-price-cart {
     float: left;
     width: 12%;
 }
@@ -45,7 +45,7 @@
 }
 /* Apply clearfix in a few places */
 /* Apply dollar signs */
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+.product .product-price-cart:before, .product .product-line-price:before, .totals-value:before {
     content: '₹';
 }
 
@@ -59,17 +59,17 @@ label {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
 }
-.column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+/* .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
     text-indent: -9999px;
-}
+} */
 .product {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
-.product .product-image {
+/* .product .product-image {
     text-align: center;
-}
+} */
 .product .product-image img {
     width: 100px;
 }
@@ -94,7 +94,7 @@ label {
     border-radius: 3px;
 }
 .product .remove-product:hover {
-    background-color: #a10980;
+    background-color: #a30982;
 }
 /* Totals section */
 .totals .totals-item {
@@ -153,7 +153,7 @@ label {
         margin-bottom: 10px;
         width: auto;
    }
-    .product-price {
+    .product-price-cart {
         clear: both;
         width: 70px;
    }

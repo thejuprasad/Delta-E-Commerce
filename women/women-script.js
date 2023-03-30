@@ -308,7 +308,7 @@ cartItems.forEach(item => {
     <div class="product-details">
         <div class="product-title">${item.title}</div>
     </div>
-    <div class="product-price">${item.discounted_price}</div>
+    <div class="product-price-cart">${item.discounted_price}</div>
     <div class="product-quantity">
         <input type="number" value="1" min="1" id="pCount">
     </div>
@@ -326,7 +326,7 @@ cartItems.forEach(item => {
 
     pCountInput.addEventListener('change', () => {
         const quantity = pCountInput.value;
-        const price = item.price;
+        const price = item.discounted_price;
         const linePrice = quantity * price;
         productLinePrice.textContent = linePrice;
 

@@ -339,10 +339,10 @@ cartItems.forEach(item => {
 
     pCountInput.addEventListener('change', () => {
         const quantity = pCountInput.value;
-        const price = item.price;
+        const price = item.discounted_price;
         const linePrice = quantity * price;
         productLinePrice.textContent = linePrice;
-
+ 
 
         // Recalculate cart subtotal
         let subtotal = 0;
