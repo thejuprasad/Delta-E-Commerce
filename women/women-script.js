@@ -1,125 +1,183 @@
-const womens_wear = "https://dummyjson.com/products/category/womens-dresses";
-const womens_watch = "https://dummyjson.com/products/category/womens-watches";
-const womens_shoes = "https://dummyjson.com/products/category/womens-shoes";
+const womens_wear = "https://classic-world.onrender.com/WomensData";
+
+const omgDeals = "https://classic-world.onrender.com/HomePageData";
+
+const preloader = document.getElementById("preloader");
 
 
 
-// 888888888888888888888 fetch womens wear 888888888888888888888888
 
-const womens_dress = document.getElementById("clothing-container")
+// 88888888888888888888888 womens home page images 888888888888888888888888888888
 
-async function getWomensShirt(url) {
+const home_image_container = document.getElementById("home-image-container") 
+
+// console.log(shirt_container)
+async function getHomeImage(url){
+    // to show the preloader before api is fetched
+    preloader.style.display = "flex";
+
     const res = await fetch(url);
     const data = await res.json();
-    // console.log(data.products)
-    // console.log(data.results)
-    showShirt(data.products)
+    const slicedOmg = data.HomePageBrandsToBag.slice(0, 10);
+
+        // hide the preloader after api is fetched
+        preloader.style.display = "none";
+
+    showSOmgDeals(slicedOmg)
 }
-getWomensShirt(womens_wear);
+getHomeImage(omgDeals);
 
 
-const showShirt = (data) => {
-    womens_dress.innerHTML = '';
+const showSOmgDeals = (data)=>{
+    home_image_container.innerHTML='';
     data.forEach(element => {
-        const { id, title, price, brand, thumbnail } = element
+        const {id,image} = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-        shirtEle.innerHTML = `
+         shirtEle.innerHTML = `
         <div id ="${id}">
-         <a href="product-detail-women.html?id=${id}">
-             <img src="${thumbnail}">
-             <div id="details">
-                 <h3>${title}</h3>
-                 <h4>${brand}</h4>
-                 <h2>Rs  <span class="price">${price}</span></h2>
-             </div>
+         <a href="clothing-women.html">
+             <img src="${image}">
          </a>
      </div>
         `
-        womens_dress.appendChild(shirtEle)
+        home_image_container.appendChild(shirtEle)
     });
 }
 
-// 888888888888888888888 fetch womens-wear 888888888888888888888888
+
+
+// 88888888888888888888888 women home page images 888888888888888888888888888888
 
 
 
-// 888888888888888888888 fetch womens-Watch 888888888888888888888888
+// 888888888888888888888888  home page best buy 8888888888888888888888888888888
 
-const Watch_container = document.getElementById("watch-container")
-async function getMensWatch(url) {
+const home_best_buy = document.getElementById("home-image-best-buy") 
+
+async function getHomeBestBuy(url){
+
+
     const res = await fetch(url);
-    const watch_data = await res.json();
-    // console.log( watch_data.products)
+    const data = await res.json();
+    const slicedBestBuy = data.HomePageBudgetToBuys.slice(6, 16);
 
-    showWatch(watch_data.products)
+    showBestBuy(slicedBestBuy)
+
 }
-getMensWatch(womens_watch);
+getHomeBestBuy(omgDeals);
 
 
-const showWatch = (watch_data) => {
-    Watch_container.innerHTML = '';
-    watch_data.forEach(element => {
-        const { id, title, price, brand, thumbnail } = element
-        const WatchEle = document.createElement('div')
-        WatchEle.classList.add('box')
-        WatchEle.innerHTML = `
+const showBestBuy = (data)=>{
+    home_best_buy.innerHTML='';
+    data.forEach(element => {
+        const {id,image} = element
+        const shirtEle = document.createElement('div')
+        shirtEle.classList.add('box')
+         shirtEle.innerHTML = `
         <div id ="${id}">
-         <a href="product-detail-women.html?id=${id}">
-             <img src="${thumbnail}">
-             <div id="details">
-                 <h3>${title}</h3>
-                 <h4>${brand}</h4>
-                 <h2>Rs  <span class="price">${price}</span></h2>
-             </div>
+         <a href="clothing-women.html">
+             <img src="${image}">
          </a>
      </div>
         `
-        Watch_container.appendChild(WatchEle)
+        home_best_buy.appendChild(shirtEle)
     });
 }
 
-// 888888888888888888888 fetch Mens-watch 888888888888888888888888
+
+// 888888888888888888888888  home page best buy 8888888888888888888888888888888
 
 
 
+// 88888888888888888888888  home image top brands 8888888888888888888888888888888
 
-// 888888888888888888888 fetch womens-shoes 888888888888888888888888
+const home_top_brand = document.getElementById("home-image-brand") 
 
-const shoe_container = document.getElementById("shoe-container")
-async function getMensShoe(url) {
+async function getHomeTopBrand(url){
+
     const res = await fetch(url);
-    const shoe_data = await res.json();
-    // console.log( shoe_data.products)
+    const data = await res.json();
+    const slicedBestBuy = data.HomePageGrandBrands.slice(8, 20);
 
-    showShoe(shoe_data.products)
+    showTopBrand(slicedBestBuy)
+
+
 }
-getMensShoe(womens_shoes);
+getHomeTopBrand(omgDeals);
 
 
-const showShoe = (shoe_data) => {
-    shoe_container.innerHTML = '';
-    shoe_data.forEach(element => {
-        const { id, title, price, brand, thumbnail } = element
-        const ShoeEle = document.createElement('div')
-        ShoeEle.classList.add('box')
-        ShoeEle.innerHTML = `
+const showTopBrand = (data)=>{
+    home_top_brand.innerHTML='';
+    data.forEach(element => {
+        const {id,image} = element
+        const shirtEle = document.createElement('div')
+        shirtEle.classList.add('box')
+         shirtEle.innerHTML = `
+        <div id ="${id}">
+         <a href="clothing-women.html">
+             <img src="${image}">
+         </a>
+     </div>
+        `
+        home_top_brand.appendChild(shirtEle)
+    });
+}
+
+
+// 88888888888888888888888  home image top brands 8888888888888888888888888888888
+
+
+
+
+
+// 888888888888888888888 fetch women-cloth 888888888888888888888888
+
+
+
+const cloth_container = document.getElementById("clothing-container") 
+async function getWoemnWear(url){
+
+
+    // to show the preloader before api is fetched
+    preloader.style.display = "flex";
+
+    const res = await fetch(url);
+    const data = await res.json();
+    const slicedDatacloth = data.slice(0, 60);
+    
+    showWomenWear(slicedDatacloth)
+    console.log(slicedDatacloth)
+
+    // hide the preloader after api is fetched
+     preloader.style.display = "none";
+}
+getWoemnWear(womens_wear);
+
+
+const showWomenWear = (data)=>{
+    cloth_container.innerHTML='';
+    data.forEach(element => {
+        const {id, title, discounted_price,brand,images} = element
+        const shirtEle = document.createElement('div')
+        shirtEle.classList.add('box')
+         shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="product-detail-women.html?id=${id}">
-             <img src="${thumbnail}">
+             <img src="${images}">
              <div id="details">
                  <h3>${title}</h3>
                  <h4>${brand}</h4>
-                 <h2>Rs  <span class="price">${price}</span></h2>
+                 <h2>Rs  <span class="price">${discounted_price}</span></h2>
              </div>
          </a>
      </div>
         `
-        shoe_container.appendChild(ShoeEle)
+        cloth_container.appendChild(shirtEle)
     });
 }
 
-// 888888888888888888888 fetch womens-shoes 888888888888888888888888
+// 888888888888888888888 fetch women-cloth 888888888888888888888888
 
 
 
@@ -129,7 +187,8 @@ const showShoe = (shoe_data) => {
 const single_product = document.getElementById("single-product");
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
-const productUrl = `https://dummyjson.com/products/${productId}`;
+const productUrl = `https://classic-world.onrender.com/WomensData/${productId}`;
+console.log(productId)
 
 async function getSIngleProduct(url) {
     const res = await fetch(url);
@@ -140,13 +199,13 @@ getSIngleProduct(productUrl);
 
 const showSIngleProduct = (single_product_details) => {
     single_product.innerHTML = '';
-    const { id, category, description, rating, title, price, brand, thumbnail } = single_product_details;
+    const { id, category, rating, title, discounted_price, brand, images } = single_product_details;
     // console.log(description)
     const SingleEle = document.createElement('div')
     SingleEle.classList.add('pro-details-container')
     SingleEle.innerHTML = `
         <div class="left-column">
-            <img src="${thumbnail}" alt="${title}">
+            <img src="${images}" alt="${title}">
         </div>
         <div class="right-column">
             <div class="product-description">
@@ -156,7 +215,6 @@ const showSIngleProduct = (single_product_details) => {
                 </div>
                 <h1>${title}</h1>
                 <h3>${brand}</h3>
-                <p>${description}</p>
             </div>
             <div class="product-configuration">
                 <div class="size-config">
@@ -170,7 +228,7 @@ const showSIngleProduct = (single_product_details) => {
                 </div>
             </div>
             <div class="product-price">
-                <span>₹ ${price}</span>
+                <span>₹ ${discounted_price}</span>
                 <div>
                     <button class="cart-btn" id="cart-btn">Add to cart</button>
                 </div>
@@ -196,9 +254,8 @@ const showSIngleProduct = (single_product_details) => {
             const newCartItem = {
                 id: single_product_details.id,
                 title: single_product_details.title,
-                price: single_product_details.price,
-                thumbnail: single_product_details.thumbnail,
-                description: single_product_details.description
+                discounted_price: single_product_details.discounted_price,
+                images: single_product_details.images,
             };
             cartItems.push(newCartItem);
 
@@ -234,20 +291,19 @@ cartItems.forEach(item => {
     productEle.classList.add('product');
     productEle.innerHTML = `
     <div class="product-image">
-        <img src="${item.thumbnail}">
+        <img src="${item.images}">
     </div>
     <div class="product-details">
         <div class="product-title">${item.title}</div>
-        <p class="product-description">${item.description}</p>
     </div>
-    <div class="product-price">${item.price}</div>
+    <div class="product-price">${item.discounted_price}</div>
     <div class="product-quantity">
         <input type="number" value="1" min="1" id="pCount">
     </div>
     <div class="product-removal">
         <button class="remove-product">Remove</button>
     </div>
-    <div class="product-line-price" id="product-mul-price">${item.price}</div>
+    <div class="product-line-price" id="product-mul-price">${item.discounted_price}</div>
     </div>
 
     `

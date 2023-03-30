@@ -1,7 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
+}
+body{
+    background-color: rgb(51, 51, 51);
 }
 
 
@@ -9,7 +16,7 @@
 
 #badge {
     position: absolute;
-    background-color: rgb(255, 30, 30);
+    background-color: rgb(253, 94, 94);
     color: white;
     border-radius: 50%;
     padding: 5px 8px;
@@ -19,7 +26,7 @@
 }
 
 #Header-container {
-    background-color: white;
+    background-color: rgb(51, 51, 51);
     margin: auto;
     text-align: center;
     width: 100%;
@@ -298,16 +305,20 @@
 #containerSlider {
     margin: auto;
     width: 90%;
+    height: 530px;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 30px;
     box-sizing: border-box;
-}
+} 
 
 #containerSlider img {
     width: 100%;
-    height: 140%;
+    /* height: 140%; */
     text-align: center;
     align-content: center;
+}
+#containerSlider img {
+    height: 30em;
 }
 
 @media(max-width: 732px) {
@@ -344,13 +355,18 @@
 {
     width: 90%;
     margin: auto;
+    text-align: center;
     padding: 50px 0;
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: capitalize;
     color: #cf05a3;
+    font-family: 'Radley', serif;
 }
-#clothing-container, #watch-container, #shoe-container
+#clothing-container,
+ #home-image-container,
+ #home-image-best-buy,
+ #home-image-brand
 {
     display: grid;
     grid-gap: 70px 20px;
@@ -365,33 +381,26 @@
     background-color: white;
     align-content: center;
     border-radius: 10px;
-    box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+    /* box-shadow: 1px 2px 6px 2px rgb(219, 219, 219); */
 }
 .box:hover
 {
     box-shadow: 1px 6px 3px 0 rgb(185, 185, 185);
 }
-#clothing-container img
+
+
+#clothing-container img,
+ #home-image-container img,
+ #home-image-best-buy img,
+ #home-image-brand img
 {
     width: 100%;
     height: 250px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-#watch-container img
-{
-    width: 100%;
-    height: 250px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-#shoe-container img
-{
-    width: 100%;
-    height: 250px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
+
+
 #details
 {
     padding: 0 15px;
@@ -414,7 +423,7 @@
 }
 #details h2
 {
-    color: #940575;
+    color: #cf05a3;
     margin: 10px 0;
 }
 
@@ -426,7 +435,10 @@
     {
         font-size: 25px;
     }
-    #clothing-container, #watch-container, #shoe-container
+    #clothing-container, 
+    #home-image-container,
+    #home-image-best-buy,
+    #home-image-brand
     {
         width: 95%;
         grid-gap: 10px;
@@ -438,10 +450,13 @@
     {
         width: 80%;
     }
-    #clothing-container, #watch-container, #shoe-container
+    #clothing-container,
+     #home-image-container,
+     #home-image-best-buy,
+     #home-image-brand
     {
         display: grid;
-        grid-gap: 70px 20px;
+        grid-gap: 32px 20px;
         grid-template-columns: repeat(3, 1fr);
         width: 80%;
     }    
@@ -453,7 +468,10 @@
         font-size: 20px;
         width: 90%;
     }
-    #clothing-container, #watch-container, #shoe-container
+    #clothing-container,
+     #home-image-container,
+     #home-image-best-buy,
+     #home-image-brand
     {
         width: 90%;
     }
@@ -464,7 +482,10 @@
     {
         width: 70%;
     }
-    #clothing-container, #watch-container, #shoe-container
+    #clothing-container,
+     #home-image-container,
+     #home-image-best-buy,
+     #home-image-brand
     {
         width: 70%;
     }
@@ -475,12 +496,18 @@
     {
         width: 80%;
     }
-    #clothing-container, #watch-container, #shoe-container
+    #clothing-container,
+     #home-image-container,
+     #home-image-best-buy,
+     #home-image-brand
     {
         width: 80%;
         grid-template-columns: repeat(2, 1fr);
     }
-    #clothing-container img, #watch-container img, #shoe-container img
+    #clothing-container img,
+     #home-image-container img,
+     #home-image-best-buy img,
+     #home-image-brand img
     {
         width: 100%;
         height: 173px;
@@ -535,14 +562,14 @@
 .pro-rating {
     margin: 20px 0px ;
     /* padding: 10px 15px; */
-    /* background-color: #03999e; */
+    /* background-color: #cf05a3; */
   }
   .pro-rating span{
     padding: 7px 12px;
     font-size: 15px;
     font-weight: 700;
     color: white;
-    background-color: #03999e;
+    background-color: #cf05a3;
   }
 
   .product-description h1 {
@@ -555,7 +582,7 @@
     font-weight: 300;
     font-size: 22px;
     margin: 10px 0px;
-    color: #03999e;
+    color: #cf05a3;
     /* letter-spacing: 1px; */
   }
   .product-description p {
@@ -584,7 +611,7 @@
   .size-choose button:hover,
   .size-choose button:active,
   .size-choose button:focus {
-    border: 2px solid #03999e;
+    border: 2px solid #cf05a3;
     outline: none;
   }
    
@@ -607,7 +634,7 @@
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    border: 2px solid #03999e;
+    border: 2px solid #cf05a3;
     display: inline-block;
     text-align: center;
     line-height: 16px;
@@ -639,7 +666,7 @@
    
   .cart-btn {
     display: inline-block;
-    background-color: #03999e;
+    background-color: #cf05a3;
     border-radius: 6px;
     font-size: 16px;
     color: #FFFFFF;
@@ -648,7 +675,7 @@
     transition: all .5s;
   }
   .cart-btn:hover {
-    background-color: #047a7e;
+    background-color: #a30e83;
   }
 
 
@@ -762,3 +789,38 @@
 
 
 /* cart button open overlay  */
+
+
+
+/* 88888888888888888888888888  preloader style 8888888888888888888888888888888888888 */
+
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+#preloader:after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 10px solid #ccc;
+    border-top-color: #cf05a3;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* 88888888888888888888888888  preloader style 8888888888888888888888888888888888888 */
