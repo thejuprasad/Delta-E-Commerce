@@ -260,38 +260,65 @@ const showSIngleProduct = (single_product_details) => {
 
 
     const addToCartBtn = SingleEle.querySelector('#cart-btn');
-    addToCartBtn.addEventListener('click', () => {
-        // get existing cart items from localStorage
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-        // check if product is already in cart
-        const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
-
-        if (!isProductInCart) {
+    // get existing cart items from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    // check if product is already in cart
+    const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
+    if (isProductInCart) {
+        addToCartBtn.textContent = "Go to cart";
+        addToCartBtn.addEventListener('click', () => {
+            window.location.href = "men-cart.html";
+        });
+    } else {
+        addToCartBtn.addEventListener('click', () => {
             // add new product to cart
             const newCartItem = {
                 id: single_product_details.id,
                 title: single_product_details.title,
                 discounted_price: single_product_details.discounted_price,
                 images: single_product_details.images,
-                // description: single_product_details.description
             };
             cartItems.push(newCartItem);
-
+    
             // update localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
+            localStorage.setItem('cartItemCount', cartItems.length);
+    
             // update cart badge
             const cartBadge = document.getElementById('badge');
             cartBadge.innerText = cartItems.length;
-        }
-    });
-
+    
+            addToCartBtn.textContent = "Go to cart";
+            addToCartBtn.addEventListener('click', () => {
+                window.location.href = "men-cart.html";
+            });
+        });
+    }
+    
 
 };
 
 // 8888888888888888888 Fetching single Product 88888888888888888888
 
+
+
+// 88888888888888888888888888 showing updated cart badge in every page 8888888888888888888888888888
+
+
+
+// get cart items count from localStorage
+const cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+
+// update cart badge text
+const cartBadge = document.getElementById('badge');
+cartBadge.innerText = cartItemCount;
+
+
+
+
+// 88888888888888888888888888 showing updated cart badge in every page 8888888888888888888888888888
 
 
 

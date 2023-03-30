@@ -9,10 +9,10 @@ const preloader = document.getElementById("preloader");
 
 // 88888888888888888888888 womens home page images 888888888888888888888888888888
 
-const home_image_container = document.getElementById("home-image-container") 
+const home_image_container = document.getElementById("home-image-container")
 
 // console.log(shirt_container)
-async function getHomeImage(url){
+async function getHomeImage(url) {
     // to show the preloader before api is fetched
     preloader.style.display = "flex";
 
@@ -20,21 +20,21 @@ async function getHomeImage(url){
     const data = await res.json();
     const slicedOmg = data.HomePageBrandsToBag.slice(0, 10);
 
-        // hide the preloader after api is fetched
-        preloader.style.display = "none";
+    // hide the preloader after api is fetched
+    preloader.style.display = "none";
 
     showSOmgDeals(slicedOmg)
 }
 getHomeImage(omgDeals);
 
 
-const showSOmgDeals = (data)=>{
-    home_image_container.innerHTML='';
+const showSOmgDeals = (data) => {
+    home_image_container.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-women.html">
              <img src="${image}">
@@ -53,9 +53,9 @@ const showSOmgDeals = (data)=>{
 
 // 888888888888888888888888  home page best buy 8888888888888888888888888888888
 
-const home_best_buy = document.getElementById("home-image-best-buy") 
+const home_best_buy = document.getElementById("home-image-best-buy")
 
-async function getHomeBestBuy(url){
+async function getHomeBestBuy(url) {
 
 
     const res = await fetch(url);
@@ -68,13 +68,13 @@ async function getHomeBestBuy(url){
 getHomeBestBuy(omgDeals);
 
 
-const showBestBuy = (data)=>{
-    home_best_buy.innerHTML='';
+const showBestBuy = (data) => {
+    home_best_buy.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-women.html">
              <img src="${image}">
@@ -92,9 +92,9 @@ const showBestBuy = (data)=>{
 
 // 88888888888888888888888  home image top brands 8888888888888888888888888888888
 
-const home_top_brand = document.getElementById("home-image-brand") 
+const home_top_brand = document.getElementById("home-image-brand")
 
-async function getHomeTopBrand(url){
+async function getHomeTopBrand(url) {
 
     const res = await fetch(url);
     const data = await res.json();
@@ -107,13 +107,13 @@ async function getHomeTopBrand(url){
 getHomeTopBrand(omgDeals);
 
 
-const showTopBrand = (data)=>{
-    home_top_brand.innerHTML='';
+const showTopBrand = (data) => {
+    home_top_brand.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-women.html">
              <img src="${image}">
@@ -135,8 +135,8 @@ const showTopBrand = (data)=>{
 
 
 
-const cloth_container = document.getElementById("clothing-container") 
-async function getWoemnWear(url){
+const cloth_container = document.getElementById("clothing-container")
+async function getWoemnWear(url) {
 
 
     // to show the preloader before api is fetched
@@ -145,23 +145,23 @@ async function getWoemnWear(url){
     const res = await fetch(url);
     const data = await res.json();
     const slicedDatacloth = data.slice(0, 60);
-    
+
     showWomenWear(slicedDatacloth)
     console.log(slicedDatacloth)
 
     // hide the preloader after api is fetched
-     preloader.style.display = "none";
+    preloader.style.display = "none";
 }
 getWoemnWear(womens_wear);
 
 
-const showWomenWear = (data)=>{
-    cloth_container.innerHTML='';
+const showWomenWear = (data) => {
+    cloth_container.innerHTML = '';
     data.forEach(element => {
-        const {id, title, discount, rating, strike_price, discounted_price,brand,images} = element
+        const { id, title, discount, rating, strike_price, discounted_price, brand, images } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="product-detail-women.html?id=${id}">
              <img src="${images}">
@@ -252,16 +252,21 @@ const showSIngleProduct = (single_product_details) => {
 
 
 
-
     const addToCartBtn = SingleEle.querySelector('#cart-btn');
-    addToCartBtn.addEventListener('click', () => {
-        // get existing cart items from localStorage
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-        // check if product is already in cart
-        const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
-
-        if (!isProductInCart) {
+    // get existing cart items from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    // check if product is already in cart
+    const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
+    
+    if (isProductInCart) {
+        addToCartBtn.textContent = "Go to cart";
+        addToCartBtn.addEventListener('click', () => {
+            window.location.href = "women-cart.html";
+        });
+    } else {
+        addToCartBtn.addEventListener('click', () => {
             // add new product to cart
             const newCartItem = {
                 id: single_product_details.id,
@@ -270,20 +275,46 @@ const showSIngleProduct = (single_product_details) => {
                 images: single_product_details.images,
             };
             cartItems.push(newCartItem);
-
+    
             // update localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
+            localStorage.setItem('cartItemCount', cartItems.length);
+    
             // update cart badge
             const cartBadge = document.getElementById('badge');
             cartBadge.innerText = cartItems.length;
-        }
-    });
-
-
+    
+            addToCartBtn.textContent = "Go to cart";
+            addToCartBtn.addEventListener('click', () => {
+                window.location.href = "women-cart.html";
+            });
+        });
+    }
+    
 };
 
+
 // 8888888888888888888 Fetching single Product 88888888888888888888
+
+
+
+// 88888888888888888888888888 showing updated cart badge in every page 8888888888888888888888888888
+
+
+
+// get cart items count from localStorage
+const cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+
+// update cart badge text
+const cartBadge = document.getElementById('badge');
+cartBadge.innerText = cartItemCount;
+
+
+
+
+// 88888888888888888888888888 showing updated cart badge in every page 8888888888888888888888888888
+
+
 
 
 // 888888888888888888888   cart page 8888888888888888888
@@ -296,7 +327,7 @@ const cartTaxElement = document.getElementById('cart-tax');
 const cartShippingElement = document.getElementById('cart-shipping');
 const cartTotalElement = document.getElementById('cart-total');
 
- cartContainer.innerHTML='';
+cartContainer.innerHTML = '';
 cartItems.forEach(item => {
 
     const productEle = document.createElement('div');
@@ -371,7 +402,8 @@ cartItems.forEach(item => {
         const cartTotal = subtotal + cartTax + 15;
         cartTotalElement.textContent = cartTotal.toFixed(2);
     });
- 
+
+
 
 });
 
