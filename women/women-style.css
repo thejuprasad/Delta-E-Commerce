@@ -405,9 +405,19 @@
     text-transform: capitalize;
 }
 
-#single-price{
+#final-price{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 7px;
+}
+
+
+
+#single-price{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     column-gap: 7px;
@@ -451,7 +461,7 @@
 #brnd-rating h4
 {
     font-weight: 100;
-    margin: 10px 0;
+    margin: 5px 0;
     width: 90px;
     white-space: nowrap;
     overflow: hidden;
@@ -463,7 +473,7 @@
     padding: 3px 8px;
     color: white;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 5px;
 }
 #single-price h2
@@ -588,6 +598,11 @@
         align-items: center;
         flex-direction: row;
         font-size: 14px;
+    }
+
+    #brnd-rating span{
+        font-size: 12px;
+        border-radius: 5px;
     }
 }
 
