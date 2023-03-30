@@ -8,8 +8,6 @@
     <title>Delta</title>
     <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
     <link rel="stylesheet" href="../bootstrap.min.css">
     <link rel="stylesheet" href="cart-style.css">
     <link rel="stylesheet" href="style.css">
@@ -18,17 +16,12 @@
         .margin-top {
             padding-top: 100px;
         }
-
-        .product-price {
-            display: flex;
-            flex-direction: row;
-        }
     </style>
 </head>
 
 <body>
     <!-- 88888888888888888888888888  Header Part  88888888888888888888888888888888888 -->
-
+    <div id="preloader"></div>
 
     <header>
         <section>
@@ -62,72 +55,73 @@
     <!-- 88888888888888888888888888  Header Part  88888888888888888888888888888888888 -->
 
 
- 
-    <!-- cart Design -->
+
+   <!-- cart Design -->
 
 
-    <div class="container" id="cart-container">
-        <div class="shopping-cart">
+   <div class="container" id="cart-container">
+    <div class="shopping-cart">
 
-            <div class="column-labels">
-                <label class="product-image">Image</label>
-                <label class="product-details">Product</label>
-                <label class="product-price">Price</label>
-                <label class="product-quantity">Quantity</label>
-                <label class="product-removal">Remove</label>
-                <label class="product-line-price">Total</label>
-            </div>
-
-            <div class="product" id="element-details">
-                <div class="product-image">
-                    <img src="https://i.dummyjson.com/data/products/68/thumbnail.webp">
-                </div>
-                <div class="product-details">
-                    <div class="product-title">Dingo Dog Bones</div>
-                    <p class="product-description">ce and ate one myself. I'm a fan.</p>
-                </div>
-                <div class="product-price">12.99</div>
-                <div class="product-quantity">
-                    <input type="number" value="2" min="1">
-                </div>
-                <div class="product-removal">
-                    <button class="remove-product">
-                        Remove
-                    </button>
-                </div>
-                <div class="product-line-price" id="product-mul-price">25.98</div>
-            </div>
-
-
-
-            <div class="totals">
-                <div class="totals-item">
-                    <label>Subtotal</label>
-                    <div class="totals-value" id="cart-subtotal"></div>
-                </div>
-                <div class="totals-item">
-                    <label>Tax (5%)</label>
-                    <div class="totals-value" id="cart-tax">3.60</div>
-                </div>
-                <div class="totals-item">
-                    <label>Shipping</label>
-                    <div class="totals-value" id="cart-shipping">15.00</div>
-                </div>
-                <div class="totals-item totals-item-total">
-                    <label>Grand Total</label>
-                    <div class="totals-value" id="cart-total">90.57</div>
-                </div>
-            </div>
-
-            <a href="men-checkout.html"><button class="btn  checkout">Checkout</button></a>
-
+        <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price-cart">Price</label>
+            <label class="product-quantity">Quantity</label>
+            <label class="product-removal">Remove</label>
+            <label class="product-line-price">Total</label>
         </div>
-    </div>
+
+        <div class="product" id="element-details">
+            <div class="product-image">
+                <img src="https://i.dummyjson.com/data/products/68/thumbnail.webp">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Dingo Dog Bones</div>
+                <p class="product-description">ce and ate one myself. I'm a fan.</p>
+            </div>
+            <div class="product-price-cart">12.99</div>
+            <div class="product-quantity">
+                <input type="number" value="2" min="1">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Remove
+                </button>
+            </div>
+            <div class="product-line-price" id="product-mul-price">25.98</div>
+        </div>
+
+
+
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <div class="totals-value" id="cart-subtotal"></div>
+            </div>
+            <div class="totals-item">
+                <label>Tax (5%)</label>
+                <div class="totals-value" id="cart-tax">3.60</div>
+            </div>
+            <div class="totals-item">
+                <label>Shipping</label>
+                <div class="totals-value" id="cart-shipping">15.00</div>
+            </div>
+            <div class="totals-item totals-item-total">
+                <label>Grand Total</label>
+                <div class="totals-value" id="cart-total">90.57</div>
+            </div>
+        </div>
+
+        <a href="men-checkout.html"><button class="btn  checkout">Checkout</button></a>
 
     </div>
+</div>
 
-    <!-- cart Design -->
+</div>
 
+<!-- cart Design -->
+
+    <!-- 8888888888888888888888888888 Product Part 888888888888888888888888888888888 -->
 </body>
 <script src="script.js"></script>
 

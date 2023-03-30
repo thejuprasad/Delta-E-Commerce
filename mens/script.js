@@ -156,17 +156,24 @@ getMensShirt(Mens_shirt);
 const showShirt = (data)=>{
     shirt_container.innerHTML='';
     data.forEach(element => {
-        const {id, title, discounted_price,brand, thumbnail,images} = element
+        const {id, title, discount, rating, strike_price, discounted_price,brand,images} = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
          shirtEle.innerHTML = `
-        <div id ="${id}">
+         <div id ="${id}">
          <a href="product-details-men.html?id=${id}">
              <img src="${images}">
              <div id="details">
                  <h3>${title}</h3>
-                 <h4>${brand}</h4>
-                 <h2>Rs  <span class="price">${discounted_price}</span></h2>
+             </div>
+             <div id="brnd-rating">
+             <h4>${brand}</h4> 
+             <span>${rating}</span>
+             </div>
+             <div id ="single-price">
+             <h2> <span class="price">₹ ${strike_price}</span></h2>
+            <h2><span >₹ ${discounted_price}</span></h2>
+            <h2><span class="disscount" > ${discount}</span></h2>
              </div>
          </a>
      </div>
@@ -204,7 +211,7 @@ getSIngleProduct(productUrl);
 
 const showSIngleProduct = (single_product_details) => {
     single_product.innerHTML = '';
-    const { id, category, description, rating, title, discounted_price, brand, images } = single_product_details;
+    const { id, category, strike_price,discount, rating, title, discounted_price, brand, images } = single_product_details;
     // console.log(description)
     const SingleEle = document.createElement('div')
     SingleEle.classList.add('pro-details-container')
@@ -233,6 +240,11 @@ const showSIngleProduct = (single_product_details) => {
                     </div>
                 </div>
             </div>
+            <div id ="single-product-price">
+             <h2> <span class="price">₹ ${strike_price}</span></h2>
+            <h2><span class="disscount-single" > ${discount}</span></h2>
+             </div>
+
             <div class="product-price">
                 <span>₹ ${discounted_price}</span>
                 <div>
@@ -309,7 +321,7 @@ cartItems.forEach(item => {
         <div class="product-title">${item.title}</div>
         
     </div>
-    <div class="product-price">${item.discounted_price}</div>
+    <div class="product-price-cart">${item.discounted_price}</div>
     <div class="product-quantity">
         <input type="number" value="1" min="1" id="pCount">
     </div>

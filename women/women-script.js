@@ -206,7 +206,7 @@ getSIngleProduct(productUrl);
 
 const showSIngleProduct = (single_product_details) => {
     single_product.innerHTML = '';
-    const { id, category, rating, title, discounted_price, brand, images } = single_product_details;
+    const { id, category, rating, title, discount, strike_price, discounted_price, brand, images } = single_product_details;
     // console.log(description)
     const SingleEle = document.createElement('div')
     SingleEle.classList.add('pro-details-container')
@@ -234,6 +234,11 @@ const showSIngleProduct = (single_product_details) => {
                     </div>
                 </div>
             </div>
+            <div id ="single-product-price">
+             <h2> <span class="price">₹ ${strike_price}</span></h2>
+            <h2><span class="disscount-single" > ${discount}</span></h2>
+             </div>
+
             <div class="product-price">
                 <span>₹ ${discounted_price}</span>
                 <div>
