@@ -280,7 +280,7 @@ const showSIngleProduct = (single_product_details) => {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             localStorage.setItem('cartItemCount', cartItems.length);
     
-            // update cart badge
+            // // update cart badge
             const cartBadge = document.getElementById('badge');
             cartBadge.innerText = cartItems.length;
     
@@ -385,6 +385,15 @@ cartItems.forEach(item => {
         if (index > -1) {
             cartItems.splice(index, 1); // Remove corresponding item from cartItems array
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+             // Update cart item count
+        let cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+        cartItemCount--;
+        localStorage.setItem('cartItemCount', cartItemCount.toString());
+        
+        // Update cart badge text
+        const cartBadge = document.getElementById('badge');
+        cartBadge.innerText = cartItemCount.toString();
         }
 
 
