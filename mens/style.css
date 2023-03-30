@@ -487,7 +487,7 @@
      #home-image-best-buy,
      #home-image-brand
     {
-        width: 80%;
+        width: 93%;
         grid-template-columns: repeat(2, 1fr);
     }
     #clothing-container img,
@@ -499,6 +499,13 @@
         height: 173px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+    }
+
+    #details h3{
+        width: 124px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
     }
 }
 

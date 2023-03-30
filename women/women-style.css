@@ -7,16 +7,14 @@
     padding: 0;
     font-family: 'Lato', sans-serif;
 }
-body{
-    background-color: rgb(51, 51, 51);
-}
+
 
 
 /* 888888888888888888888888888888  Header Part 8888888888888888888888888888888888 */
 
 #badge {
     position: absolute;
-    background-color: rgb(253, 94, 94);
+    background-color: rgb(255, 30, 30);
     color: white;
     border-radius: 50%;
     padding: 5px 8px;
@@ -26,7 +24,7 @@ body{
 }
 
 #Header-container {
-    background-color: rgb(51, 51, 51);
+    background-color: white;
     margin: auto;
     text-align: center;
     width: 100%;
@@ -381,7 +379,7 @@ body{
     background-color: white;
     align-content: center;
     border-radius: 10px;
-    /* box-shadow: 1px 2px 6px 2px rgb(219, 219, 219); */
+    box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
 }
 .box:hover
 {
@@ -401,11 +399,33 @@ body{
 }
 
 
-#details
+#details,#single-price,#brnd-rating
 {
-    padding: 0 15px;
+    padding: 0 11px;
     text-transform: capitalize;
 }
+
+#single-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 7px;
+}
+#single-price h2{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 15px;
+}
+
+.price{
+    color: #86898d;
+    text-decoration: line-through;
+}
+
 .box a 
 {
     text-decoration: none;
@@ -415,16 +435,46 @@ body{
 {
     font-size: 16px;
     margin: 10px 0;
+    width: 184px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 }
-#details h4
+
+#brnd-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    /* column-gap: 9px; */
+}
+#brnd-rating h4
 {
     font-weight: 100;
     margin: 10px 0;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-#details h2
+
+#brnd-rating span{
+    background-color: green;
+    padding: 3px 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
+}
+#single-price h2
 {
     color: #cf05a3;
     margin: 10px 0;
+}
+
+.disscount{
+    color: green;
+    font-size: 10px;
 }
 
 /* ----------------------------- MEDIA QUERY --------------------------- */
@@ -501,7 +551,7 @@ body{
      #home-image-best-buy,
      #home-image-brand
     {
-        width: 80%;
+        width: 93%;
         grid-template-columns: repeat(2, 1fr);
     }
     #clothing-container img,
@@ -513,6 +563,31 @@ body{
         height: 173px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+    }
+
+    #details h3{
+        width: 124px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+
+    #single-price{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        column-gap: 0px;
+    }
+
+    #single-price h2{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        font-size: 14px;
     }
 }
 

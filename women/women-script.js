@@ -158,7 +158,7 @@ getWoemnWear(womens_wear);
 const showWomenWear = (data)=>{
     cloth_container.innerHTML='';
     data.forEach(element => {
-        const {id, title, discounted_price,brand,images} = element
+        const {id, title, discount, rating, strike_price, discounted_price,brand,images} = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
          shirtEle.innerHTML = `
@@ -167,8 +167,15 @@ const showWomenWear = (data)=>{
              <img src="${images}">
              <div id="details">
                  <h3>${title}</h3>
-                 <h4>${brand}</h4>
-                 <h2>Rs  <span class="price">${discounted_price}</span></h2>
+             </div>
+             <div id="brnd-rating">
+             <h4>${brand}</h4> 
+             <span>${rating}</span>
+             </div>
+             <div id ="single-price">
+             <h2> <span class="price">₹ ${strike_price}</span></h2>
+            <h2><span >₹ ${discounted_price}</span></h2>
+            <h2><span class="disscount" > ${discount}</span></h2>
              </div>
          </a>
      </div>
