@@ -318,14 +318,14 @@ body{
 
 /* 888888888888888888888888888  carousel part 8888888888888888888888888888888 */
 
-#containerSlider {
+/* #containerSlider {
     margin: auto;
     width: 90%;
     height: 530px;
     text-align: center;
     padding-top: 30px;
     box-sizing: border-box;
-}
+} */
 
 .carousel-item {
     height: 530px;
@@ -334,25 +334,19 @@ body{
     height: 30em;
 }
 
-#containerSlider img {
+/* #containerSlider img {
     width: 100%;
-    /* height: 140%; */
     text-align: center;
     align-content: center;
 }
 
 #containerSlider img {
     height: 30em;
-}
+} */
 
-@media(max-width: 732px) {
-    #containerSlider img {
-        height: 12em;
-    }
-}
 
 @media(max-width: 500px) {
-    #containerSlider img {
+    /* #containerSlider img {
         height: 15em;
     }
 
@@ -363,7 +357,7 @@ body{
         padding-top: 20px;
         height: 268px;
         box-sizing: border-box;
-    }
+    } */
 
 
     .carousel-item {
