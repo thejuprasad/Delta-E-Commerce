@@ -1,4 +1,4 @@
-const Mens_shirt ="https://classic-world.onrender.com/MensData";
+const Mens_shirt = "https://classic-world.onrender.com/MensData";
 const omgDeals = "https://classic-world.onrender.com/HomePageData";
 
 const preloader = document.getElementById("preloader");
@@ -9,10 +9,10 @@ const preloader = document.getElementById("preloader");
 // 88888888888888888888888 mens home page images 888888888888888888888888888888
 
 
-const home_image_container = document.getElementById("home-image-container") 
+const home_image_container = document.getElementById("home-image-container")
 
 // console.log(shirt_container)
-async function getHomeImage(url){
+async function getHomeImage(url) {
     // to show the preloader before api is fetched
     preloader.style.display = "flex";
 
@@ -20,21 +20,21 @@ async function getHomeImage(url){
     const data = await res.json();
     const slicedOmg = data.HomePageOmgDeals.slice(0, 10);
 
-        // hide the preloader after api is fetched
-        preloader.style.display = "none";
+    // hide the preloader after api is fetched
+    preloader.style.display = "none";
 
     showSOmgDeals(slicedOmg)
 }
 getHomeImage(omgDeals);
 
 
-const showSOmgDeals = (data)=>{
-    home_image_container.innerHTML='';
+const showSOmgDeals = (data) => {
+    home_image_container.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-men.html">
              <img src="${image}">
@@ -53,9 +53,9 @@ const showSOmgDeals = (data)=>{
 
 // 888888888888888888888888  home page best buy 8888888888888888888888888888888
 
-const home_best_buy = document.getElementById("home-image-best-buy") 
+const home_best_buy = document.getElementById("home-image-best-buy")
 
-async function getHomeBestBuy(url){
+async function getHomeBestBuy(url) {
 
 
     const res = await fetch(url);
@@ -68,13 +68,13 @@ async function getHomeBestBuy(url){
 getHomeBestBuy(omgDeals);
 
 
-const showBestBuy = (data)=>{
-    home_best_buy.innerHTML='';
+const showBestBuy = (data) => {
+    home_best_buy.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-men.html">
              <img src="${image}">
@@ -92,9 +92,9 @@ const showBestBuy = (data)=>{
 
 // 88888888888888888888888  home image top brands 8888888888888888888888888888888
 
-const home_top_brand = document.getElementById("home-image-brand") 
+const home_top_brand = document.getElementById("home-image-brand")
 
-async function getHomeTopBrand(url){
+async function getHomeTopBrand(url) {
 
     const res = await fetch(url);
     const data = await res.json();
@@ -107,13 +107,13 @@ async function getHomeTopBrand(url){
 getHomeTopBrand(omgDeals);
 
 
-const showTopBrand = (data)=>{
-    home_top_brand.innerHTML='';
+const showTopBrand = (data) => {
+    home_top_brand.innerHTML = '';
     data.forEach(element => {
-        const {id,image} = element
+        const { id, image } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
         <div id ="${id}">
          <a href="clothing-men.html">
              <img src="${image}">
@@ -134,32 +134,32 @@ const showTopBrand = (data)=>{
 
 
 
-const shirt_container = document.getElementById("clothing-container") 
-async function getMensShirt(url){
+const shirt_container = document.getElementById("clothing-container")
+async function getMensShirt(url) {
 
 
-        // to show the preloader before api is fetched
+    // to show the preloader before api is fetched
     preloader.style.display = "flex";
 
     const res = await fetch(url);
     const data = await res.json();
     const slicedData = data.slice(0, 90);
-    
+
     showShirt(slicedData)
 
-        // hide the preloader after api is fetched
-     preloader.style.display = "none";
+    // hide the preloader after api is fetched
+    preloader.style.display = "none";
 }
 getMensShirt(Mens_shirt);
 
 
-const showShirt = (data)=>{
-    shirt_container.innerHTML='';
+const showShirt = (data) => {
+    shirt_container.innerHTML = '';
     data.forEach(element => {
-        const {id, title, discount, rating, strike_price, discounted_price,brand,images} = element
+        const { id, title, discount, rating, strike_price, discounted_price, brand, images } = element
         const shirtEle = document.createElement('div')
         shirtEle.classList.add('box')
-         shirtEle.innerHTML = `
+        shirtEle.innerHTML = `
          <div id ="${id}">
          <a href="product-details-men.html?id=${id}">
              <img src="${images}">
@@ -185,7 +185,7 @@ const showShirt = (data)=>{
 // 888888888888888888888 fetch Mens-cloth 888888888888888888888888
 
 
- 
+
 
 // 8888888888888888888 Fetching single Product 88888888888888888888
 
@@ -196,14 +196,14 @@ const productUrl = `https://classic-world.onrender.com/MensData/${productId}`;
 
 async function getSIngleProduct(url) {
 
-        // to show the preloader before api is fetched
-        preloader.style.display = "flex";
+    // to show the preloader before api is fetched
+    preloader.style.display = "flex";
 
     const res = await fetch(url);
     const single_product_details = await res.json();
 
     // hide the preloader after api is fetched
-    preloader.style.display = "none"; 
+    preloader.style.display = "none";
 
     showSIngleProduct(single_product_details);
 }
@@ -211,7 +211,7 @@ getSIngleProduct(productUrl);
 
 const showSIngleProduct = (single_product_details) => {
     single_product.innerHTML = '';
-    const { id, category, strike_price,discount, rating, title, discounted_price, brand, images } = single_product_details;
+    const { id, category, strike_price, discount, rating, title, discounted_price, brand, images } = single_product_details;
     // console.log(description)
     const SingleEle = document.createElement('div')
     SingleEle.classList.add('pro-details-container')
@@ -263,7 +263,7 @@ const showSIngleProduct = (single_product_details) => {
 
     // get existing cart items from localStorage
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
+
     // check if product is already in cart
     const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
     if (isProductInCart) {
@@ -273,6 +273,12 @@ const showSIngleProduct = (single_product_details) => {
         });
     } else {
         addToCartBtn.addEventListener('click', () => {
+
+            // check again if product is already in cart (in case multiple clicks occur before the button is disabled)
+            const isProductInCart = cartItems.some(item => item.id === single_product_details.id);
+            if (isProductInCart) {
+                return;
+            }
             // add new product to cart
             const newCartItem = {
                 id: single_product_details.id,
@@ -281,22 +287,22 @@ const showSIngleProduct = (single_product_details) => {
                 images: single_product_details.images,
             };
             cartItems.push(newCartItem);
-    
+
             // update localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             localStorage.setItem('cartItemCount', cartItems.length);
-    
+
             // update cart badge
             const cartBadge = document.getElementById('badge');
             cartBadge.innerText = cartItems.length;
-    
+
             addToCartBtn.textContent = "Go to cart";
             addToCartBtn.addEventListener('click', () => {
                 window.location.href = "men-cart.html";
             });
         });
     }
-    
+
 
 };
 
@@ -335,7 +341,7 @@ const cartTaxElement = document.getElementById('cart-tax');
 const cartShippingElement = document.getElementById('cart-shipping');
 const cartTotalElement = document.getElementById('cart-total');
 
- cartContainer.innerHTML='';
+cartContainer.innerHTML = '';
 cartItems.forEach(item => {
 
     const productEle = document.createElement('div');
@@ -369,7 +375,7 @@ cartItems.forEach(item => {
         const price = item.discounted_price;
         const linePrice = quantity * price;
         productLinePrice.textContent = linePrice;
- 
+
 
         // Recalculate cart subtotal
         let subtotal = 0;
@@ -395,14 +401,14 @@ cartItems.forEach(item => {
             cartItems.splice(index, 1); // Remove corresponding item from cartItems array
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-                   // Update cart item count
-        let cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
-        cartItemCount--;
-        localStorage.setItem('cartItemCount', cartItemCount.toString());
-        
-        // Update cart badge text
-        const cartBadge = document.getElementById('badge');
-        cartBadge.innerText = cartItemCount.toString();
+            // Update cart item count
+            let cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+            cartItemCount--;
+            localStorage.setItem('cartItemCount', cartItemCount.toString());
+
+            // Update cart badge text
+            const cartBadge = document.getElementById('badge');
+            cartBadge.innerText = cartItemCount.toString();
         }
 
 
@@ -420,7 +426,7 @@ cartItems.forEach(item => {
         const cartTotal = subtotal + cartTax + 15;
         cartTotalElement.textContent = cartTotal.toFixed(2);
     });
- 
+
 
 });
 
