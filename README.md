@@ -1,7 +1,7 @@
 # Delta-E-Commerce
 
 To Run this Project run the below command in your cmd:
-   git clone https://github.com/Shaanrahman123/Delta-E-Commerce.git
+   git clone project link
 
 Fully Responsive E-Commerce Project Developed by
 
