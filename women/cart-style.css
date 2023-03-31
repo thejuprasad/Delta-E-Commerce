@@ -255,6 +255,12 @@ label {
     }
 }
 
+@media (max-width: 768px) {
+    .checkout-Final-Price{
+        font-size: 16px;
+    }
+    }
+
 
 /* checkout page design  */
 
