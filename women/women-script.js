@@ -195,7 +195,7 @@ const single_product = document.getElementById("single-product");
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 const productUrl = `https://classic-world.onrender.com/WomensData/${productId}`;
-console.log(productId)
+
 
 async function getSIngleProduct(url) {
     const res = await fetch(url);
@@ -413,6 +413,9 @@ cartItems.forEach(item => {
     });
 
 
+    document.getElementById("checkout").addEventListener("click", function () {
+        window.location.href = `women-checkout.html?price=${cartTotal}`;
+    });
 
 });
 
@@ -431,8 +434,12 @@ const cartTotal = subtotal + cartTax + 15;
 cartTotalElement.textContent = cartTotal.toFixed(2);
 
 
-// 888888888888888888888   cart page 8888888888888888888
 
+
+
+// 88888888888888888888888888 cart page 888888888888888888888888888888
+
+ 
 
 
 

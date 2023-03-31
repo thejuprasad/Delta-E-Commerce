@@ -428,6 +428,12 @@ cartItems.forEach(item => {
     });
 
 
+    
+    document.getElementById("checkout").addEventListener("click", function () {
+        window.location.href = `men-checkout.html?price=${cartTotal}`;
+    });
+
+
 });
 
 // Calculate cart subtotal on page load

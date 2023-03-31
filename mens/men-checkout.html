@@ -63,7 +63,7 @@
     <main>
 
         <div class="row g-5">
-            
+             
             <div class="col-md-12 col-lg-12">
                 <h4 class="mb-3">Billing address</h4>
                 <form class="checkout-form">
@@ -138,10 +138,11 @@
                         </div>
                     </div>
 
-                
+                    <hr class="my-4">
+                    <h3>Total Amount : ₹ <span id="checkout-Final-Price"></span></h3>
                     <hr class="my-4">
 
-                    <button class="w-100 btn-checkout btn btn-lg" type="submit">Continue to checkout</button>
+                    <button class="w-100 btn-checkout btn btn-lg" id="place-order" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">Place Order</button>
                 </form>
             </div>
         </div>
@@ -150,8 +151,31 @@
 
 <!-- checkout part -->
 
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+          <h4 id="modal-content"></h4>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn">Ok</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 <script src="script.js"></script>
+<script src="men-checkout.js"></script>
+<script src="../bootstrap.bundle.min.js"></script>
 
 
 </html>

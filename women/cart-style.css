@@ -247,4 +247,15 @@ label {
 }
 
 
+@media (max-width: 535px) {
+    .checkout-back-design {
+        background-color: #f3f3f3;
+        padding: 60px;
+        border-radius: 20px;
+    }
+}
+
+
 /* checkout page design  */
+
+
