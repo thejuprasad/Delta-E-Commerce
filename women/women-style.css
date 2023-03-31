@@ -1021,7 +1021,7 @@ body{
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: justify;
+            text-align: center;
         }
 
         .pro-cat-box2{
@@ -1029,7 +1029,7 @@ body{
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: justify;
+            text-align: center;
         }
   }
 
