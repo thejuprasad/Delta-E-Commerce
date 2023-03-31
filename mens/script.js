@@ -51,6 +51,65 @@ const showSOmgDeals = (data) => {
 
 
 
+
+
+// 88888888888888888888888888 category of product section 8888888888888888888888888888
+
+
+
+function changeImage1() {
+    var img = document.getElementById("img-slider1");
+    img.src = images1[x1];
+    x1++;
+    if (x1 >= images1.length) {
+        x1 = 0;
+    }
+    setTimeout("changeImage1()", 3000);
+}
+
+var images1 = [], x1 = 0;
+images1[0] = "../img/indo-western/indo-western1.jpg";
+images1[1] = "../img/indo-western/indo-western2.jpg";
+images1[2] = "../img/indo-western/indo-western3.jpg";
+images1[3] = "../img/indo-western/indo-western4.jpg";
+setTimeout("changeImage1()", 3000);
+
+
+
+
+
+
+function changeImage2() {
+    var img = document.getElementById("img-slider2");
+    img.src = images2[x2];
+    x2++;
+    if (x2 >= images2.length) {
+        x2 = 0;
+    }
+    setTimeout("changeImage2()", 3000);
+}
+
+var images2 = [], x2 = 0;
+images2[0] = "../img/occational-wear/occasion1.jpg";
+images2[1] = "../img/occational-wear/occasion2.jpg";
+images2[2] = "../img/occational-wear/occasion3.jpg";
+images2[3] = "../img/occational-wear/occasion4.jpg";
+setTimeout("changeImage2()", 3000);
+
+
+
+
+// 88888888888888888888888888 category of product section 8888888888888888888888888888
+
+
+
+
+
+
+
+
+
+
 // 888888888888888888888888  home page best buy 8888888888888888888888888888888
 
 const home_best_buy = document.getElementById("home-image-best-buy")
@@ -279,7 +338,7 @@ const showSIngleProduct = (single_product_details) => {
             if (isProductInCart) {
                 return;
             }
-            // add new product to cart
+            // add new product to cart 
             const newCartItem = {
                 id: single_product_details.id,
                 title: single_product_details.title,
@@ -336,17 +395,28 @@ cartBadge.innerText = cartItemCount;
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const cartContainer = document.getElementById('element-details');
 const cartSubtotalElement = document.getElementById('cart-subtotal');
-
+const mainCartContainer = document.getElementById('cart-container');
 const cartTaxElement = document.getElementById('cart-tax');
 const cartShippingElement = document.getElementById('cart-shipping');
 const cartTotalElement = document.getElementById('cart-total');
 
-cartContainer.innerHTML = '';
-cartItems.forEach(item => {
+if (cartItems.length === 0) {
+    mainCartContainer.innerHTML = '';
+    const emptyCartMessage = document.createElement('div');
+    emptyCartMessage.innerHTML = `
+    <div class="empty-cart-text">
+    <h3>Your Cart Is Empty.</h3>
+    </div>
+    `
+    mainCartContainer.appendChild(emptyCartMessage);
+} else {
 
-    const productEle = document.createElement('div');
-    productEle.classList.add('product');
-    productEle.innerHTML = `
+    cartContainer.innerHTML = '';
+    cartItems.forEach(item => {
+
+        const productEle = document.createElement('div');
+        productEle.classList.add('product');
+        productEle.innerHTML = `
     <div class="product-image">
         <img src="${item.images}">
     </div>
@@ -365,76 +435,78 @@ cartItems.forEach(item => {
     </div>
 
     `
-    cartContainer.appendChild(productEle);
+        cartContainer.appendChild(productEle);
 
-    const pCountInput = productEle.querySelector('#pCount');
-    const productLinePrice = productEle.querySelector('#product-mul-price');
+        const pCountInput = productEle.querySelector('#pCount');
+        const productLinePrice = productEle.querySelector('#product-mul-price');
 
-    pCountInput.addEventListener('change', () => {
-        const quantity = pCountInput.value;
-        const price = item.discounted_price;
-        const linePrice = quantity * price;
-        productLinePrice.textContent = linePrice;
+        pCountInput.addEventListener('change', () => {
+            const quantity = pCountInput.value;
+            const price = item.discounted_price;
+            const linePrice = quantity * price;
+            productLinePrice.textContent = linePrice;
 
 
-        // Recalculate cart subtotal
-        let subtotal = 0;
-        const linePrices = cartContainer.querySelectorAll('.product-line-price');
-        linePrices.forEach(linePrice => {
-            subtotal += parseFloat(linePrice.textContent);
+            // Recalculate cart subtotal
+            let subtotal = 0;
+            const linePrices = cartContainer.querySelectorAll('.product-line-price');
+            linePrices.forEach(linePrice => {
+                subtotal += parseFloat(linePrice.textContent);
+            });
+            cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+            // Recalculate cart tax and total
+            const cartTax = subtotal * 0.05;
+            cartTaxElement.textContent = cartTax.toFixed(2);
+            const cartTotal = subtotal + cartTax + 15;
+            cartTotalElement.textContent = cartTotal.toFixed(2);
         });
-        cartSubtotalElement.textContent = subtotal.toFixed(2);
 
-        // Recalculate cart tax and total
-        const cartTax = subtotal * 0.05;
-        cartTaxElement.textContent = cartTax.toFixed(2);
-        const cartTotal = subtotal + cartTax + 15;
-        cartTotalElement.textContent = cartTotal.toFixed(2);
-    });
+        const removeProductButton = productEle.querySelector('.remove-product');
 
-    const removeProductButton = productEle.querySelector('.remove-product');
+        removeProductButton.addEventListener('click', () => {
+            cartContainer.removeChild(productEle); // Remove product element from the DOM
+            const index = cartItems.indexOf(item);
+            if (index > -1) {
+                cartItems.splice(index, 1); // Remove corresponding item from cartItems array
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-    removeProductButton.addEventListener('click', () => {
-        cartContainer.removeChild(productEle); // Remove product element from the DOM
-        const index = cartItems.indexOf(item);
-        if (index > -1) {
-            cartItems.splice(index, 1); // Remove corresponding item from cartItems array
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                // Update cart item count
+                let cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+                cartItemCount--;
+                localStorage.setItem('cartItemCount', cartItemCount.toString());
 
-            // Update cart item count
-            let cartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
-            cartItemCount--;
-            localStorage.setItem('cartItemCount', cartItemCount.toString());
-
-            // Update cart badge text
-            const cartBadge = document.getElementById('badge');
-            cartBadge.innerText = cartItemCount.toString();
-        }
+                // Update cart badge text
+                const cartBadge = document.getElementById('badge');
+                cartBadge.innerText = cartItemCount.toString();
+            }
 
 
-        // Recalculate cart subtotal
-        let subtotal = 0;
-        const linePrices = cartContainer.querySelectorAll('.product-line-price');
-        linePrices.forEach(linePrice => {
-            subtotal += parseFloat(linePrice.textContent);
+            // Recalculate cart subtotal
+            let subtotal = 0;
+            const linePrices = cartContainer.querySelectorAll('.product-line-price');
+            linePrices.forEach(linePrice => {
+                subtotal += parseFloat(linePrice.textContent);
+            });
+            cartSubtotalElement.textContent = subtotal.toFixed(2);
+
+            // Recalculate cart tax and total
+            const cartTax = subtotal * 0.05;
+            cartTaxElement.textContent = cartTax.toFixed(2);
+            const cartTotal = subtotal + cartTax + 15;
+            cartTotalElement.textContent = cartTotal.toFixed(2);
         });
-        cartSubtotalElement.textContent = subtotal.toFixed(2);
 
-        // Recalculate cart tax and total
-        const cartTax = subtotal * 0.05;
-        cartTaxElement.textContent = cartTax.toFixed(2);
-        const cartTotal = subtotal + cartTax + 15;
-        cartTotalElement.textContent = cartTotal.toFixed(2);
+
+
+        document.getElementById("checkout").addEventListener("click", function () {
+            window.location.href = `men-checkout.html?price=${cartTotal}`;
+        });
+
+
     });
 
-
-    
-    document.getElementById("checkout").addEventListener("click", function () {
-        window.location.href = `men-checkout.html?price=${cartTotal}`;
-    });
-
-
-});
+}
 
 // Calculate cart subtotal on page load
 let subtotal = 0;

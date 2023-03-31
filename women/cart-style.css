@@ -87,14 +87,14 @@ label {
 .product .remove-product {
     border: 0;
     padding: 4px 8px;
-    background-color: #cf05a3;
+    background-color: #f67062;
     color: #fff;
     font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
     font-size: 12px;
     border-radius: 3px;
 }
 .product .remove-product:hover {
-    background-color: #a30982;
+    background-color: #eb4b39;
 }
 /* Totals section */
 .totals .totals-item {
@@ -122,13 +122,13 @@ label {
     border: 0;
     margin-top: 20px;
     padding: 6px 25px;
-    background-color: #cf05a3;
+    background-color: #f67062;
     color: #fff;
     font-size: 20px;
     border-radius: 3px;
 }
 .checkout:hover {
-    background-color: #111;
+    background-color: #e94735;
     color: white;
 }
 /* Make adjustments for tablet */
@@ -210,30 +210,30 @@ label {
     border-radius: 20px;
 }
 .col-md-12 > h4{
-    color: #cf05a3;
+    color: #f67062;
 }
 
 .btn-redeem{
     padding : 0px 10px;
-    background-color: #cf05a3;
+    background-color: #f67062;
     color: white;
 }
 .btn-checkout{
     color: white;
-    background-color: #cf05a3;
+    background-color: #f67062;
 }
 .btn-checkout:hover{
     color: white;
-    background-color: #7e0d65;
+    background-color: #e94735;
 }
 .checkout-form .form-label{
     color: #222;
 }
 .your-cart{
-    color: #cf05a3;
+    color: #f67062;
 }
 .bg-badge{
-    background-color: #cf05a3;
+    background-color: #f67062;
 }
 
 .checkout-form .form-check .form-check-label{

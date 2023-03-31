@@ -595,7 +595,7 @@ body{
      #home-image-brand img
     {
         width: 100%;
-        height: 173px;
+        height: 208px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
@@ -935,10 +935,10 @@ body{
 
 #preloader:after {
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 10px solid #ccc;
+    border: 8px solid #ccc;
     border-top-color: #03999e;
     animation: spin 1s linear infinite;
 }
@@ -949,3 +949,99 @@ body{
     }
 }
 /* 88888888888888888888888888  preloader style 8888888888888888888888888888888888888 */
+
+
+
+/* 88888888888888888888888888 category of product section 8888888888888888888888888888 */
+ 
+.pro-cat-bg{
+    background-color: #03999e;
+}
+
+.card-span{
+    border-radius: 10px;
+}
+
+.card-span img{
+    border-radius: 10px;
+    max-height: 550px;
+}
+
+.text-12000{
+    color: #fff !important;
+    margin: 12px 0px;
+  }
+
+  .pro-cat-head{
+    font-size: 2.98598rem !important;
+  }
+  .fs-1 {
+    font-size: 1.2rem !important;
+}
+
+.pro-cat-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pro-cat-box2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+.card-span {
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+        .cat-content{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .pro-cat-head {
+            font-size: 1.98598rem !important;
+        }
+
+        .pro-cat-box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+        }
+
+        .pro-cat-box2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+        }
+  }
+
+
+/* 88888888888888888888888888 category of product section 8888888888888888888888888888 */
+
+
+
+/* 8888888888888888888888888888888888   footer  88888888888888888888888888 */
+
+.nav-item a{
+    color: #03999e;
+}
+
+.empty-cart-text{
+    font-size: 3rem;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 8888888888888888888888888888888888   footer  88888888888888888888888888 */
