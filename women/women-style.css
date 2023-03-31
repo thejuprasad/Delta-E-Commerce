@@ -364,6 +364,14 @@ body{
         height: 268px;
         box-sizing: border-box;
     }
+
+
+    .carousel-item {
+        height: 260px;
+    }
+    .carousel-item img{
+        height: 14em;
+    }
 }
 
 /* 888888888888888888888888888  carousel part 8888888888888888888888888888888 */
