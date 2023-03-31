@@ -9,7 +9,7 @@ Fully Responsive E-Commerce Project Developed by
 2. Theju Prasad Reddy
 3. Chavda Tushar
 
-Pages that Includes 
+Pages Includes 
 
 1. Home
 2. All Product
